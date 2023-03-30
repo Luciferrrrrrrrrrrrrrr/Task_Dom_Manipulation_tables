@@ -4,9 +4,16 @@ let heading=document.getElementById("headingsection");
 let header=document.createElement("h1");
 heading.appendChild(header);
 header.innerText="Student Information";
-header.classList.add("container-fluid","header-section");
+header.setAttribute("id","title")
+header.classList.add("container-fluid");
+let description = document.createElement("p");
+description.setAttribute("id","description");
+heading.appendChild(description);
+description.innerText="The student informaation listed in the below table";
+let tablecontent = document.getElementById("tablecontent");
+tablecontent.classList.add("table-responsive");
 let table = document.getElementById("tablesection");
-table.classList.add("table","table-bordered","table-hover","table-modification");
+table.classList.add("table","table-bordered");
 let tablebody = document.createElement("tbody");
 table.appendChild(tablebody);
 tablebody.setAttribute("id","listitems");
@@ -30,7 +37,7 @@ async function displayItems(listElements,rows_per_page,page){
 displayItems(tablebody,rows,currentpage);
 
 let paginationSection = document.getElementById('buttons');
-
+paginationSection.classList.add("d-flex","justify-content-center","paginationSection");
 async function pagination_setup(){
     paginationSection.innerHTML="";
     let allData= await fetch(baseurl).then((data)=>data.json());
